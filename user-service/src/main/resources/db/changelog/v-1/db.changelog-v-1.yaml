@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2026-01-11-create-user-table
+      author: Горбачев Иван
+      changes:
+        - sqlFile:
+            path: 01-create-user-table.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 2026-01-12-create-user-credential-table
+      author: Горбачев Иван
+      changes:
+        - sqlFile:
+            path: 02-create-user-credential-table.sql
+            relativeToChangelogFile: true

@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:6541/simple_bank}
+    username: ${SPRING_DATASOURCE_USERNAME:qwerty}
+    password: ${SPRING_DATASOURCE_PASSWORD:qwerty}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.orm.jpa: INFO
+    org.springframework.transaction: INFO
+    org.springframework.transaction.interceptor: TRACE
+    org.springframework.orm.jpa.JpaTransactionManager: DEBUG
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /user-service/swagger-ui.html
